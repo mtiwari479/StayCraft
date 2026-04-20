@@ -1,0 +1,78 @@
+"use client"
+
+import Image from "next/image"
+import { Button } from "@/components/ui/button"
+import { ArrowRight } from "lucide-react"
+
+export function Hero() {
+  return (
+    <section className="relative min-h-screen flex items-center pt-16">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-32">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div className="flex flex-col gap-8">
+            <div className="flex flex-col gap-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-foreground leading-[1.1] text-balance">
+                Ready-to-move private rooms. No hassle.
+              </h1>
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-lg">
+                Standardized, verified spaces for students & professionals. Move in today, stress-free.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-4">
+              <Button size="lg" className="group">
+                Explore Rooms
+                <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+              </Button>
+              <Button size="lg" variant="outline">
+                Apply Now
+              </Button>
+            </div>
+
+            <div className="flex items-center gap-6 pt-4">
+              <div className="flex flex-col">
+                <span className="text-2xl font-semibold text-foreground">500+</span>
+                <span className="text-sm text-muted-foreground">Verified rooms</span>
+              </div>
+              <div className="w-px h-10 bg-border" />
+              <div className="flex flex-col">
+                <span className="text-2xl font-semibold text-foreground">98%</span>
+                <span className="text-sm text-muted-foreground">Happy tenants</span>
+              </div>
+              <div className="w-px h-10 bg-border" />
+              <div className="flex flex-col">
+                <span className="text-2xl font-semibold text-foreground">24h</span>
+                <span className="text-sm text-muted-foreground">Move-in ready</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="relative">
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+              <Image
+                src="/images/hero-room.jpg"
+                alt="Modern minimalist private room with warm lighting"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+            <div className="absolute -bottom-4 -left-4 bg-card rounded-xl p-4 shadow-lg border border-border">
+              <div className="flex items-center gap-3">
+                <div className="size-10 rounded-full bg-accent/30 flex items-center justify-center">
+                  <svg className="size-5 text-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-sm font-medium text-foreground">Ready to move in</p>
+                  <p className="text-xs text-muted-foreground">Fully furnished & verified</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
