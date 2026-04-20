@@ -6,9 +6,9 @@ export async function middleware(request: NextRequest) {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
   const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
-  // If env variables are missing, log error and return next response
+  // If env variables are missing, just continue
   if (!supabaseUrl || !supabaseKey) {
-    console.error('Missing Supabase environment variables')
+    console.warn('Missing Supabase environment variables')
     return NextResponse.next()
   }
 
@@ -33,9 +33,11 @@ export async function middleware(request: NextRequest) {
       },
     })
 
+    // Refresh user session if it exists
     await supabase.auth.getUser()
   } catch (error) {
     console.error('Middleware error:', error)
+    // Continue anyway, don't block the request
   }
 
   return response
