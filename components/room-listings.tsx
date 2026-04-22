@@ -178,7 +178,7 @@ export function RoomListings() {
   }
 
   return (
-    <section id="rooms" className="py-24 lg:py-32 bg-card">
+    <section id="rooms" className="pt-10 pb-20 lg:pt-12 lg:pb-28 bg-card">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
           <div className="flex flex-col gap-2">

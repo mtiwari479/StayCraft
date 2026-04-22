@@ -112,7 +112,7 @@ export function Hero() {
                 </div>
                 <div>
                   <p className="text-sm font-medium text-foreground">Ready to move in</p>
-                  <p className="text-xs text-muted-foreground">Fully furnished & verified</p>
+                  <p className="text-xs text-muted-foreground">Verified</p>
                 </div>
               </div>
             </div>

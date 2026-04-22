@@ -13,7 +13,7 @@ export default function SignUpSuccessPage() {
       <div className="w-full max-w-sm">
         <div className="flex flex-col gap-6">
           <Link href="/" className="text-xl font-semibold tracking-tight text-foreground text-center">
-            nestd
+            StayCraft
           </Link>
           <Card>
             <CardHeader>

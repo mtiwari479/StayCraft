@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { MapPin } from "lucide-react"
 
 const footerLinks = {
   company: [
@@ -30,6 +31,10 @@ export function Footer() {
             <p className="text-sm text-muted-foreground leading-relaxed">
               Ready-to-move private rooms for students and professionals. Simplified living.
             </p>
+            <div className="inline-flex w-fit items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1.5 text-xs font-medium text-emerald-800">
+              <MapPin className="size-3.5" />
+              Building from Indore
+            </div>
           </div>
 
           <div className="flex flex-col gap-4">
@@ -80,7 +85,7 @@ export function Footer() {
 
         <div className="pt-8 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
-            {"© 2026 StayCraft. All rights reserved."}
+            {"Copyright 2026 StayCraft. All rights reserved."}
           </p>
           <div className="flex items-center gap-6">
             <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">

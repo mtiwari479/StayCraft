@@ -15,8 +15,8 @@ export default function Home() {
       <Hero />
       <RoomCategories />
       <HowItWorks />
-      <Features />
       <RoomListings />
+      <Features />
       <ForOwners />
       <FinalCTA />
       <Footer />

@@ -7,7 +7,7 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Nestd - Ready-to-Move Private Rooms',
+  title: 'StayCraft - Ready-to-Move Private Rooms',
   description: 'Standardized, verified private rooms for students and working professionals. No hassle, no brokers.',
   generator: 'v0.app',
   icons: {

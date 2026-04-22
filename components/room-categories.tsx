@@ -25,7 +25,7 @@ const categories = [
 
 export function RoomCategories() {
   return (
-    <section id="rooms" className="py-24 lg:py-32">
+    <section id="rooms" className="pt-20 pb-10 lg:pt-28 lg:pb-12">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex flex-col gap-4 text-center max-w-2xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-foreground text-balance">
