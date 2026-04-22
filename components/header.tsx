@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Menu, X } from "lucide-react"
+import { MapPin, Menu, X } from "lucide-react"
 import { createClient } from "@/lib/supabase/client"
 import { useEffect } from "react"
 import type { User } from "@supabase/supabase-js"
@@ -44,6 +44,16 @@ export function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b border-blue-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <div className="flex items-center gap-2 justify-center text-center">
+            <MapPin className="h-5 w-5 text-blue-600" />
+            <span className="text-sm font-semibold text-blue-900">
+              ✨ Now Available in <span className="text-blue-600">Indore</span> ✨
+            </span>
+          </div>
+        </div>
+      </div>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="text-xl font-semibold tracking-tight text-foreground">

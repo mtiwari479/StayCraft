@@ -1,12 +1,38 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 
+const heroPhotos = [
+  {
+    src: "/images/1bhk_demo01.jpeg",
+    alt: "Modern minimalist private room with warm lighting",
+  },
+  {
+    src: "/images/1bhk_demo02.jpeg",
+    alt: "Student room with organized furniture and natural light",
+  },
+  {
+    src: "/images/1bhk_demo03.jpeg",
+    alt: "Professional ready-to-move private room",
+  },
+]
+
 export function Hero() {
+  const [activePhoto, setActivePhoto] = useState(0)
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setActivePhoto((current) => (current + 1) % heroPhotos.length)
+    }, 3500)
+
+    return () => window.clearInterval(timer)
+  }, [])
+
   return (
-    <section className="relative min-h-screen flex items-center pt-16">
+    <section className="relative min-h-screen flex items-center pt-28">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-32">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div className="flex flex-col gap-8">
@@ -49,13 +75,33 @@ export function Hero() {
 
           <div className="relative">
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
-              <Image
-                src="/images/hero-room.jpg"
-                alt="Modern minimalist private room with warm lighting"
-                fill
-                className="object-cover"
-                priority
-              />
+              {heroPhotos.map((photo, index) => (
+                <Image
+                  key={photo.src}
+                  src={photo.src}
+                  alt={photo.alt}
+                  fill
+                  className={`object-cover transition-opacity duration-700 ${
+                    activePhoto === index ? "opacity-100" : "opacity-0"
+                  }`}
+                  priority={index === 0}
+                />
+              ))}
+            </div>
+            <div className="mt-5 flex justify-center gap-2">
+              {heroPhotos.map((photo, index) => (
+                <button
+                  key={photo.src}
+                  type="button"
+                  aria-label={`Show room photo ${index + 1}`}
+                  onClick={() => setActivePhoto(index)}
+                  className={`h-2.5 rounded-full transition-all ${
+                    activePhoto === index
+                      ? "w-8 bg-foreground"
+                      : "w-2.5 bg-muted-foreground/30 hover:bg-muted-foreground/60"
+                  }`}
+                />
+              ))}
             </div>
             <div className="absolute -bottom-4 -left-4 bg-card rounded-xl p-4 shadow-lg border border-border">
               <div className="flex items-center gap-3">
