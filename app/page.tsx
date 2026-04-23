@@ -7,19 +7,23 @@ import { RoomListings } from "@/components/room-listings"
 import { ForOwners } from "@/components/for-owners"
 import { FinalCTA } from "@/components/final-cta"
 import { Footer } from "@/components/footer"
+import { AnnouncementBar } from "@/components/announcement-bar"
 
 export default function Home() {
   return (
     <main className="min-h-screen">
       <Header />
-      <Hero />
-      <RoomCategories />
-      <HowItWorks />
-      <RoomListings />
-      <Features />
-      <ForOwners />
-      <FinalCTA />
-      <Footer />
+      <div className="pt-16">  {/* pushes below fixed header */}
+  <AnnouncementBar />
+  <Hero />
+        <RoomCategories />
+        <HowItWorks />
+        <RoomListings />
+        <Features />
+        <ForOwners />
+        <FinalCTA />
+        <Footer />
+      </div>
     </main>
   )
 }

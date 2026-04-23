@@ -18,7 +18,7 @@ const categories = [
     title: "Professional Living",
     description: "Clean, quiet, and premium spaces for working professionals who value comfort.",
     icon: Briefcase,
-    image: "/images/professional-room.jpg",
+    image: "/images/prof-room.jpg",
     features: ["Work-from-home ready", "Premium amenities", "Prime locations"],
   },
 ]

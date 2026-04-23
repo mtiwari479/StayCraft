@@ -32,7 +32,7 @@ export function Hero() {
   }, [])
 
   return (
-    <section className="relative min-h-screen flex items-center pt-28">
+    <section className="relative min-h-screen flex items-center pt-5">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-32">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div className="flex flex-col gap-8">
@@ -103,19 +103,22 @@ export function Hero() {
                 />
               ))}
             </div>
-            <div className="absolute -bottom-4 -left-4 bg-card rounded-xl p-4 shadow-lg border border-border">
-              <div className="flex items-center gap-3">
-                <div className="size-10 rounded-full bg-accent/30 flex items-center justify-center">
-                  <svg className="size-5 text-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="text-sm font-medium text-foreground">Ready to move in</p>
-                  <p className="text-xs text-muted-foreground">Verified</p>
-                </div>
-              </div>
-            </div>
+            <div className="absolute -bottom-3 -left-3 bg-white/90 backdrop-blur-md rounded-lg px-3 py-2 shadow-md border border-border">
+  <div className="flex items-center gap-2">
+    
+    <div className="size-7 rounded-full bg-emerald-100 flex items-center justify-center">
+      <svg className="size-3.5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+      </svg>
+    </div>
+
+    <div className="leading-tight">
+      <p className="text-xs font-medium text-foreground">Ready to move in</p>
+      <p className="text-[10px] text-muted-foreground">Verified & trusted</p>
+    </div>
+
+  </div>
+</div>
           </div>
         </div>
       </div>
