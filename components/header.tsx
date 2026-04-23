@@ -44,11 +44,12 @@ export function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b border-blue-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center gap-2 justify-center text-center">
-            <MapPin className="h-5 w-5 text-blue-600" />
-            <span className="text-sm font-semibold text-blue-900">
+      <div className="border-b border-emerald-100 bg-gradient-to-r from-emerald-50 via-white to-emerald-50">
+        <div className="mx-auto flex h-10 max-w-7xl items-center justify-center px-4 sm:px-6 lg:px-8">
+          <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-white px-3 py-1 text-xs font-semibold text-emerald-800 shadow-sm sm:text-sm">
+            <MapPin className="size-3.5 text-emerald-600" />
+            <span>Now available in Indore</span>
+            <span className="hidden">
               ✨ Now Available in <span className="text-blue-600">Indore</span> ✨
             </span>
           </div>
@@ -166,5 +167,6 @@ export function Header() {
         </div>
       )}
     </header>
+    
   )
 }
