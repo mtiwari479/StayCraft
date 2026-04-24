@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import Image from "next/image"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 
@@ -46,12 +47,11 @@ export function Hero() {
             </div>
 
             <div className="flex flex-wrap gap-4">
-              <Button size="lg" className="group">
-                Explore Rooms
-                <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-              </Button>
-              <Button size="lg" variant="outline">
-                Apply Now
+              <Button asChild size="lg" className="group">
+                <Link href="#rooms">
+                  Explore Rooms
+                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                </Link>
               </Button>
             </div>
 

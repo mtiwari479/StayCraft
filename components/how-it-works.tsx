@@ -5,15 +5,15 @@ import { FileText, Calendar, Home } from "lucide-react"
 const steps = [
   {
     step: "01",
-    title: "Apply online",
-    description: "Fill out a simple application form with your details and preferences. Takes less than 5 minutes.",
-    icon: FileText,
-  },
-  {
-    step: "02",
     title: "Schedule visit",
     description: "Pick a convenient time slot to visit the room. Our team will guide you through the space.",
     icon: Calendar,
+  },
+  {
+    step: "02",
+    title: "Book online",
+    description: "Secure your room online with a simple booking flow and quick confirmation.",
+    icon: FileText,
   },
   {
     step: "03",

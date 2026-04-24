@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import { Card } from "@/components/ui/card"
-import { ArrowRight, GraduationCap, Briefcase } from "lucide-react"
+import { GraduationCap, Briefcase } from "lucide-react"
 
 const categories = [
   {
@@ -25,7 +25,7 @@ const categories = [
 
 export function RoomCategories() {
   return (
-    <section id="rooms" className="pt-20 pb-10 lg:pt-28 lg:pb-12">
+    <section id="room-categories" className="pt-20 pb-10 lg:pt-28 lg:pb-12">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex flex-col gap-4 text-center max-w-2xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-foreground text-balance">
@@ -40,14 +40,14 @@ export function RoomCategories() {
           {categories.map((category) => (
             <Card
               key={category.id}
-              className="group cursor-pointer overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-300"
+              className="overflow-hidden border-0 shadow-lg"
             >
               <div className="relative aspect-[16/10] overflow-hidden">
                 <Image
                   src={category.image}
                   alt={category.title}
                   fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
                 <div className="absolute top-4 left-4">
@@ -57,9 +57,8 @@ export function RoomCategories() {
                 </div>
               </div>
               <div className="p-6">
-                <div className="flex items-center justify-between mb-3">
+                <div className="mb-3">
                   <h3 className="text-xl font-semibold text-foreground">{category.title}</h3>
-                  <ArrowRight className="size-5 text-muted-foreground transition-transform group-hover:translate-x-1" />
                 </div>
                 <p className="text-muted-foreground mb-4">{category.description}</p>
                 <div className="flex flex-wrap gap-2">

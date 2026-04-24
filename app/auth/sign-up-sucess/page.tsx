@@ -7,7 +7,24 @@ import {
 } from '@/components/ui/card'
 import Link from 'next/link'
 
-export default function SignUpSuccessPage() {
+export default async function SignUpSuccessPage({
+  searchParams,
+}: {
+  searchParams?: Promise<{ roomId?: string; location?: string; intent?: string }>
+}) {
+  const resolvedSearchParams = searchParams ? await searchParams : undefined
+  const intent = resolvedSearchParams?.intent
+  const roomLocation = resolvedSearchParams?.location
+  const roomId = resolvedSearchParams?.roomId
+  const followUpMessage =
+    intent === 'book-room'
+      ? 'Once your email is confirmed, sign in to continue booking'
+      : intent === 'room-enquiry'
+        ? 'Once your email is confirmed, sign in to continue your enquiry for'
+        : intent === 'schedule-visit'
+          ? 'Once your email is confirmed, sign in to continue scheduling your visit for'
+          : null
+
   return (
     <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10 bg-background">
       <div className="w-full max-w-sm">
@@ -25,6 +42,12 @@ export default function SignUpSuccessPage() {
                 You&apos;ve successfully signed up. Please check your email to
                 confirm your account before signing in.
               </p>
+              {followUpMessage && (
+                <p className="mt-3 text-sm text-muted-foreground">
+                  {followUpMessage}{' '}
+                  {roomLocation ? `the room in ${roomLocation}` : `room #${roomId}`}.
+                </p>
+              )}
             </CardContent>
           </Card>
         </div>

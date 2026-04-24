@@ -1,4 +1,4 @@
-import { MongoClient } from "mongodb"
+import { createClient } from "@supabase/supabase-js"
 
 const rooms = [
   {
@@ -9,9 +9,9 @@ const rooms = [
     city: "Indore",
     pincode: "452010",
     type: "Student",
-    isReady: true,
-    forGirlsOnly: true,
-    bedsAvailable: 2,
+    is_ready: true,
+    for_girls_only: true,
+    beds_available: 2,
   },
   {
     id: 2,
@@ -21,9 +21,9 @@ const rooms = [
     city: "Indore",
     pincode: "452001",
     type: "Professional",
-    isReady: true,
-    forGirlsOnly: false,
-    bedsAvailable: 1,
+    is_ready: true,
+    for_girls_only: false,
+    beds_available: 1,
   },
   {
     id: 3,
@@ -33,9 +33,9 @@ const rooms = [
     city: "Indore",
     pincode: "452012",
     type: "Student",
-    isReady: true,
-    forGirlsOnly: false,
-    bedsAvailable: 3,
+    is_ready: true,
+    for_girls_only: false,
+    beds_available: 3,
   },
   {
     id: 4,
@@ -45,53 +45,56 @@ const rooms = [
     city: "Indore",
     pincode: "452009",
     type: "Professional",
-    isReady: true,
-    forGirlsOnly: true,
-    bedsAvailable: 1,
+    is_ready: true,
+    for_girls_only: true,
+    beds_available: 1,
   },
   {
     id: 5,
     image: "/images/room-1.jpg",
     price: "15,000",
-    location: "Vaishali Nagar, Jaipur",
-    city: "Jaipur",
-    pincode: "302021",
+    location: "Vaishali Nagar, Indore",
+    city: "Indore",
+    pincode: "452021",
     type: "Student",
-    isReady: true,
-    forGirlsOnly: false,
-    bedsAvailable: 2,
+    is_ready: true,
+    for_girls_only: false,
+    beds_available: 2,
   },
   {
     id: 6,
     image: "/images/room-2.jpg",
     price: "20,000",
-    location: "Koramangala, Bengaluru",
-    city: "Bengaluru",
-    pincode: "560034",
+    location: "Palasia, Indore",
+    city: "Indore",
+    pincode: "452001",
     type: "Professional",
-    isReady: true,
-    forGirlsOnly: false,
-    bedsAvailable: 1,
+    is_ready: true,
+    for_girls_only: false,
+    beds_available: 1,
   },
 ]
 
-if (!process.env.MONGODB_URI) {
-  throw new Error("Set MONGODB_URI before running the seed script")
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+
+if (!supabaseUrl || !serviceRoleKey) {
+  throw new Error("Set NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY before running the seed script")
 }
 
-const client = new MongoClient(process.env.MONGODB_URI)
-const dbName = process.env.MONGODB_DB || "staycraft"
+const supabase = createClient(supabaseUrl, serviceRoleKey, {
+  auth: {
+    autoRefreshToken: false,
+    persistSession: false,
+  },
+})
 
-try {
-  await client.connect()
-  const db = client.db(dbName)
-  const collection = db.collection("rooms")
+const { error } = await supabase.from("rooms").upsert(rooms, {
+  onConflict: "id",
+})
 
-  await collection.deleteMany({})
-  await collection.insertMany(rooms)
-  await collection.createIndex({ city: 1, pincode: 1, isReady: 1 })
-
-  console.log(`Seeded ${rooms.length} rooms into ${dbName}.rooms`)
-} finally {
-  await client.close()
+if (error) {
+  throw error
 }
+
+console.log(`Seeded ${rooms.length} rooms into Supabase public.rooms`)
